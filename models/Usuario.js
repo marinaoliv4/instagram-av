@@ -8,15 +8,14 @@ module.exports = (sequelize, DataTypes) => {
         }, {
             tableName: "usuarios",
             timestamps: false
-
         }
         
     );
+    }
 
-
-    // Usuario.associate = (models) => {
+    Usuario.associate = (models) => {
         // relação 1:N (usuario tem varios posts)
-        // Usuario.hasMany(models.Post, {as:"posts", foreignKey:"usuarios_id"});
+        Usuario.hasMany(models.Post, {as:"posts", foreignKey:"usuarios_id"});
         // N:M (usuario curte varios posts)
         // Usuario.belongsToMany(models.Post, {
         //     as: "curtiu",
@@ -25,8 +24,6 @@ module.exports = (sequelize, DataTypes) => {
         //     otherKey: "posts_id",
         //     timestamps: false
         // })
-    // }
+    }
 
     return Usuario;
-
-    }

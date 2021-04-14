@@ -20,8 +20,8 @@ const usuariosController = {
     },
 
     update: async (req, res) => {
-        const{id: _id} = req.params;
-        const {nome: _nome, email: _email, senha: _senha} = req.body;
+        const {id: _id } = req.params; 
+        const { nome: _nome, email: _email, senha: _senha} = req.body;
 
         const usuario = await Usuario.update({
             nome: _nome,
