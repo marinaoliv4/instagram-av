@@ -1,14 +1,13 @@
-const {Usuario} = require('../models')
+const {Usuario} = require('../models');
 
 module.exports = async (request, response, next) => {
     const {nome, email, senha} = request.body; //recebo o email q o usuario digitou
-
+    let user = await Usuario.findAll({where: {email}}); //verifica se existe usuario c o email
+    
     if (nome == null || email == null || senha == null) {
     response.status(400).json({ erro: 'preencha os campos obrigatórios'});
     }
- 
-    let user = await Usuario.findAll({where: {email}}); //verifica se existe usuario c o email
-    
+
     if(user.length) { 
         response.status(400).json({erro:"email já cadastrado"})
         return;
@@ -21,8 +20,6 @@ module.exports = async (request, response, next) => {
             } else {
                 next();    
             }
-            
-            
         }
     }
 }

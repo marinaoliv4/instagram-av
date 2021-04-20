@@ -1,4 +1,4 @@
-const {Post} = require("../models");
+const { Post } = require("../models");
 
 const postsController = {
     index: async (req, res) => {
@@ -58,8 +58,7 @@ const postsController = {
             }
         });
 
-        return res.json(post);
-        
+        return res.json(post);  
       }
 }
 
